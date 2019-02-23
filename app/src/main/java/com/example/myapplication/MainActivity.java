@@ -24,12 +24,13 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-    ListView listView;
+
     // *** Это теги для дальнейшей обработки JSON ***
     private static String TAG_SCHEDULE = "raspisanie";
     private static String TAG_ID = "id";
     private static String TAG_PREDM = "urok";
     private static String TAG_TIME = "id_day";
+
 
     // *** Определяем ассоциативный массив для адаптера ***
     ArrayList<HashMap<String, String>> scheduleList;
@@ -49,10 +50,7 @@ public class MainActivity extends Activity {
             @Override
             public void handleMessage(Message msg) {
                 //Заносим новые значения в ListView
-                ListAdapter adapter = new SimpleAdapter(
-                        MainActivity.this, scheduleList,
-                        R.layout.lister, new String[] {TAG_PREDM, TAG_TIME }, new int[] {
-                        R.id.predmer, R.id.timer});
+                ListAdapter adapter = new SimpleAdapter(MainActivity.this, scheduleList, R.layout.activity_column, new String[]{TAG_TIME, TAG_PREDM}, new int[]{R.id.Coldayid, R.id.ColUrok});
 
                 ListView lv = (ListView) findViewById(R.id.listView1);
                 lv.setAdapter(adapter);
